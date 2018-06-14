@@ -1,0 +1,33 @@
+{
+    "name": "prezent/inky",
+    "description": "PHP implementation of Zurb's Inky parser",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["email", "responsive", "foundation", "inky"],
+    "homepage": "http://www.prezent.nl",
+    "authors": [
+        {
+            "name": "Sander Marechal",
+            "email": "sander@prezent.nl"
+        },
+        {
+            "name": "Prezent Internet B.V.",
+            "email": "github@prezent.nl"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Prezent\\Inky\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Prezent\\Inky\\Tests\\": "tests/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "require-dev": {
+        "symfony/dom-crawler": "^3.4",
+        "symfony/css-selector": "^3.4"
+    }
+}
