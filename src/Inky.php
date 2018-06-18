@@ -74,6 +74,15 @@ class Inky
     {
         return [
             new Component\ButtonFactory(),
+            new Component\CalloutFactory(),
+            new Component\CenterFactory(),
+            new Component\ColumnsFactory(),
+            new Component\ContainerFactory(),
+            new Component\ItemFactory(),
+            new Component\MenuFactory(),
+            new Component\RowFactory(),
+            new Component\SpacerFactory(),
+            new Component\WrapperFactory(),
         ];
     }
 }
