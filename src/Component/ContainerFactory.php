@@ -13,7 +13,7 @@ class ContainerFactory extends BaseFactory
 <table align="center" class="container">
     <tbody>
         <tr>
-            <td></td>
+            <td><inky-content /></td>
         </tr>
     </tbody>
 </table>
@@ -29,19 +29,13 @@ EOL;
 
     public function parse(\DOMNode $target)
     {
-        $template = $this->getTemplate();
+        $class = $target->hasAttribute('class') ? $target->getAttribute('class') : null;
+        $table = $this->replace($target, self::$template);
 
-        $table = $target->ownerDocument->importNode($template->documentElement, true);
-        $target->parentNode->replaceChild($table, $target);
-
-        $content = $table->firstChild->firstChild->firstChild;
-
-        if ($target->hasAttribute('class')) {
-            $content->setAttribute('class', $content->getAttribute('class') . ' ' . $target->getAttribute('class'));
-        }
-
-        while ($child = $target->firstChild) {
-            $content->appendChild($child);
+        if ($class) {
+            $xpath = new \DOMXPath($table->ownerDocument);
+            $xpath->query('//td', $table)->item(0)
+                ->setAttribute('class', $class);
         }
     }
 }

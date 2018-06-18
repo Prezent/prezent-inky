@@ -15,7 +15,7 @@ class ButtonFactory extends BaseFactory
         <td>
             <table>
                 <tr>
-                    <td><a href="#"></a></td>
+                    <td><a href="#"><inky-content /></a></td>
                 </tr>
             </table>
         </td>
@@ -33,27 +33,18 @@ EOL;
 
     public function parse(\DOMNode $target)
     {
-        $template = $this->getTemplate();
-
-        $table = $template->documentElement;
-        $link = $template->getElementsByTagName('a')->item(0);
-
         $href = $target->hasAttribute('href') ? $target->getAttribute('href') : '#';
         $class = trim(($target->hasAttribute('class') ? $target->getAttribute('class') : '') . ' button');
 
-        $link->setAttribute('href', $href);
+        $table = $this->replace($target, self::$template);
         $table->setAttribute('class', $class);
 
+        $xpath = new \DOMXpath($table->ownerDocument);
+        $link = $xpath->query('//a', $table)->item(0);
+        $link->setAttribute('href', $href);
+
         if (in_array('expanded', explode(' ', $class))) {
-            $this->wrap($link, '<center data-parsed="data-parsed"></center>');
+            $this->wrap($link, '<center data-parsed="data-parsed"><inky-content /></center>');
         }
-
-        foreach ($target->childNodes as $child) {
-            $child = $template->importNode($child, true);
-            $link->appendChild($child);
-        }
-
-        $clone = $target->ownerDocument->importNode($table, true);
-        $target->parentNode->replaceChild($clone, $target);
     }
 }

@@ -10,28 +10,51 @@ namespace Prezent\Inky\Component;
 abstract class BaseFactory implements ComponentFactory
 {
     /**
-     * @var string
+     * Wrap a DOM node in a template
      */
-    protected static $template = '';
-
-    /**
-     * Get template DOM
-     */
-    protected function getTemplate(): \DOMDocument
-    {
-        $dom = new \DOMDocument();
-        $dom->loadHTML(trim(static::$template), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_NOBLANKS);
-
-        return $dom;
-    }
-
-    protected function wrap(\DOMElement $element, string $tag)
+    protected function wrap(\DOMElement $element, string $html)
     {
         $wrapper = $element->ownerDocument->createDocumentFragment();
-        $wrapper->appendXML($tag);
-        $target = $wrapper->firstChild;
+        $wrapper->appendXML($html);
 
+        $result = $wrapper->firstChild;
+        $element->parentNode->appendChild($wrapper);
+
+        $xpath = new \DOMXpath($element->ownerDocument);
+        $targets = $xpath->query('//inky-content', $wrapper);
+
+        if ($targets->length) {
+            $parent = $targets->item(0)->parentNode;
+            $parent->removeChild($targets->item(0));
+            $parent->appendChild($element);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Replace a DOM node with a template
+     */
+    protected function replace(\DOMElement $element, string $html)
+    {
+        $wrapper = $element->ownerDocument->createDocumentFragment();
+        $wrapper->appendXML($html);
+
+        $result = $wrapper->firstChild;
         $element->parentNode->replaceChild($wrapper, $element);
-        $target->appendChild($element);
+
+        $xpath = new \DOMXpath($element->ownerDocument);
+        $targets = $xpath->query('//inky-content', $wrapper);
+
+        if ($targets->length) {
+            $parent = $targets->item(0)->parentNode;
+            $parent->removeChild($targets->item(0));
+
+            while ($child = $element->firstChild) {
+                $parent->appendChild($child);
+            }
+        }
+
+        return $result;
     }
 }
