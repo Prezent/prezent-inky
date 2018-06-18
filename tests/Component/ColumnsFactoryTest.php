@@ -27,13 +27,13 @@ class ColumnsFactoryTest extends ComponentTestCase
 
     public function testAttributes()
     {
-        $crawler = $this->createCrawler('<container><row><columns class="bar" small="6" large="4">foo</columns></row></container>');
+        $crawler = $this->createCrawler('<container><row><columns class="bar" small="6" large="4" valign="top">foo</columns></row></container>');
         $factory = new ColumnsFactory();
 
         foreach ($crawler->filter('columns') as $node) {
             $factory->parse($node);
         }
 
-        $this->assertCount(2, $crawler->filter('container row th.small-6.large-4.columns.bar table th'));
+        $this->assertCount(2, $crawler->filter('container row th.small-6.large-4.columns.bar[valign="top"] table th'));
     }
 }

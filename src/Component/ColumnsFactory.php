@@ -33,6 +33,7 @@ EOL;
         $class = $target->hasAttribute('class') ? $target->getAttribute('class') : null;
         $small = $target->hasAttribute('small') ? $target->getAttribute('small') : null;
         $large = $target->hasAttribute('large') ? $target->getAttribute('large') : null;
+        $valign = $target->hasAttribute('valign') ? $target->getAttribute('valign') : null;
 
         $th = $this->replace($target, self::$template);
 
@@ -46,6 +47,10 @@ EOL;
 
         if ($large) {
             $this->addClass($th, 'large-' . $large);
+        }
+
+        if ($valign) {
+            $th->setAttribute('valign', $valign);
         }
     }
 }
