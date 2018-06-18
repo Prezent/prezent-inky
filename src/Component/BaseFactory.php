@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Prezent\Inky\Component;
 
 /**
@@ -11,8 +9,10 @@ abstract class BaseFactory implements ComponentFactory
 {
     /**
      * Wrap a DOM node in a template
+     *
+     * @param string $html
      */
-    protected function wrap(\DOMElement $element, string $html)
+    protected function wrap(\DOMElement $element, $html)
     {
         $wrapper = $element->ownerDocument->createDocumentFragment();
         $wrapper->appendXML($html);
@@ -34,8 +34,10 @@ abstract class BaseFactory implements ComponentFactory
 
     /**
      * Replace a DOM node with a template
+     *
+     * @param string $html
      */
-    protected function replace(\DOMElement $element, string $html)
+    protected function replace(\DOMElement $element, $html)
     {
         $wrapper = $element->ownerDocument->createDocumentFragment();
         $wrapper->appendXML($html);
@@ -60,8 +62,10 @@ abstract class BaseFactory implements ComponentFactory
 
     /**
      * Add a class to an element
+     *
+     * @param string $class
      */
-    protected function addClass(\DOMElement $element, string $class)
+    protected function addClass(\DOMElement $element, $class)
     {
         if ($element->hasAttribute('class')) {
             $element->setAttribute('class', $element->getAttribute('class') . ' ' . $class);

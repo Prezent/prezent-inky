@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Prezent\Inky\Component;
 
 /**
@@ -23,7 +21,7 @@ EOL;
     /**
      * {@inheritDoc}
      */
-    public function getName(): string
+    public function getName()
     {
         return 'columns';
     }

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Prezent\Inky;
 
 use Prezent\Inky\Component\ComponentFactory;
@@ -14,7 +12,7 @@ class Inky
     /**
      * @var array
      */
-    private $componentFactories;
+    private $componentFactories = [];
 
     /**
      * Constructor
@@ -32,8 +30,10 @@ class Inky
 
     /**
      * Add a component factory
+     *
+     * @return self
      */
-    public function addComponentFactory(ComponentFactory $componentFactory): self
+    public function addComponentFactory(ComponentFactory $componentFactory)
     {
         $this->componentFactories[$componentFactory->getName()] = $componentFactory;
         return $this;
@@ -41,8 +41,11 @@ class Inky
 
     /**
      * Parse HTML and replace inky components
+     *
+     * @param string $html
+     * @return string
      */
-    public function parse(string $html): string
+    public function parse($html)
     {
         $errorHandling = libxml_use_internal_errors(true);
 
@@ -69,8 +72,10 @@ class Inky
 
     /**
      * Get default component factories
+     *
+     * @return array
      */
-    public static function getDefaultComponentFactories(): array
+    public static function getDefaultComponentFactories()
     {
         return [
             new Component\ButtonFactory(),

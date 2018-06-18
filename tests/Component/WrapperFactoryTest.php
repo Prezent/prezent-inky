@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Prezent\Inky\Tests\Component;
 
 use Prezent\Inky\Component\WrapperFactory;

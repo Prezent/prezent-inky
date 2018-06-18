@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Prezent\Inky\Component;
 
 /**
@@ -12,7 +10,7 @@ class CenterFactory extends BaseFactory
     /**
      * {@inheritDoc}
      */
-    public function getName(): string
+    public function getName()
     {
         return 'center';
     }

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Prezent\Inky\Tests\Component;
 
 use PHPUnit\Framework\TestCase;
@@ -12,7 +10,13 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 abstract class ComponentTestCase extends TestCase
 {
-    protected function createCrawler(string $html)
+    /**
+     * Create a DOM crawler
+     *
+     * @param string $html
+     * @return Crawler
+     */
+    protected function createCrawler($html)
     {
         return new Crawler('<html><head></head><body>' . $html . '</body></html>', 'http://localhost');
     }

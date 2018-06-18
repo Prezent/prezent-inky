@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Prezent\Inky\Component;
 
 /**
@@ -11,8 +9,10 @@ interface ComponentFactory
 {
     /**
      * Get the tag name of the component
+     *
+     * @return string
      */
-    public function getName(): string;
+    public function getName();
 
     /**
      * Parse the node
