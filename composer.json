@@ -31,7 +31,7 @@
         "php": "^5.5|^7.0"
     },
     "require-dev": {
-        "symfony/dom-crawler": "^3.4",
-        "symfony/css-selector": "^3.4"
+        "symfony/dom-crawler": "^3.4|^4.0",
+        "symfony/css-selector": "^3.4|^4.0"
     }
 }
