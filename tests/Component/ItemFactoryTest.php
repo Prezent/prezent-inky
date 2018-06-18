@@ -47,8 +47,6 @@ class ItemFactoryTest extends ComponentTestCase
             $factory->parse($node);
         }
 
-        echo $crawler->html();
-
         $this->assertCount(1, $crawler->filter('menu > th.menu-item.bar > a'));
     }
 }

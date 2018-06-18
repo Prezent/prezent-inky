@@ -45,8 +45,6 @@ class RowFactoryTest extends ComponentTestCase
             $factory->parse($node);
         }
 
-        echo $crawler->html();
-
         $this->assertCount(1, $crawler->filter('container table.row columns.first.last'));
     }
 
