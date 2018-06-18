@@ -35,5 +35,14 @@ EOL;
         if ($class) {
             $this->addClass($table, $class);
         }
+
+        // Add first/last class to all columns
+        $xpath = new \DOMXpath($table->ownerDocument);
+        $columns = $xpath->query('tbody/tr/columns|tbody/tr/th[contains(@class, "columns")]', $table);
+
+        if ($columns->length) {
+            $this->addClass($columns->item(0), 'first');
+            $this->addClass($columns->item($columns->length - 1), 'last');
+        }
     }
 }
