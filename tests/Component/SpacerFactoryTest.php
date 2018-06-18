@@ -14,14 +14,14 @@ class SpacerFactoryTest extends ComponentTestCase
 {
     public function testBasic()
     {
-        $crawler = $this->createCrawler('<spacer size="100"></spacer>');
+        $crawler = $this->createCrawler('<spacer></spacer>');
         $factory = new SpacerFactory();
 
         foreach ($crawler->filter('spacer') as $node) {
             $factory->parse($node);
         }
 
-        $this->assertCount(1, $crawler->filter('table.spacer > tbody > tr > td[height="100px"]'));
+        $this->assertCount(1, $crawler->filter('table.spacer > tbody > tr > td[height="16px"]'));
     }
 
     public function testClasses()

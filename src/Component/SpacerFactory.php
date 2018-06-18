@@ -24,12 +24,12 @@ EOL;
      */
     public function getName(): string
     {
-        return 'item';
+        return 'spacer';
     }
 
     public function parse(\DOMNode $target)
     {
-        $size = $target->hasAttribute('size') ? $target->getAttribute('size') : 10;
+        $size = $target->hasAttribute('size') ? $target->getAttribute('size') : 16;
         $class = $target->hasAttribute('class') ? $target->getAttribute('class') : null;
 
         $table = $this->replace($target, self::$template);
