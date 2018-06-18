@@ -1,6 +1,8 @@
 prezent/inky
 ============
 
+[![Build Status](https://travis-ci.org/Prezent/prezent-inky.svg?branch=master)](https://travis-ci.org/Prezent/prezent-inky)
+
 A PHP implementation of [Zurb's Inky parser](https://foundation.zurb.com/emails/docs/inky.html).
 
 Installation
