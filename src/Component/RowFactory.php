@@ -33,7 +33,7 @@ EOL;
         $table = $this->replace($target, self::$template);
 
         if ($class) {
-            $table->setAttribute('class', 'row ' . $class);
+            $this->addClass($table, $class);
         }
     }
 }

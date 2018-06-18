@@ -57,4 +57,16 @@ abstract class BaseFactory implements ComponentFactory
 
         return $result;
     }
+
+    /**
+     * Add a class to an element
+     */
+    protected function addClass(\DOMElement $element, string $class)
+    {
+        if ($element->hasAttribute('class')) {
+            $element->setAttribute('class', $element->getAttribute('class') . ' ' . $class);
+        } else {
+            $element->setAttribute('class', $class);
+        }
+    }
 }

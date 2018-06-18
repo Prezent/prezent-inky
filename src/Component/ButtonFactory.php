@@ -34,16 +34,19 @@ EOL;
     public function parse(\DOMNode $target)
     {
         $href = $target->hasAttribute('href') ? $target->getAttribute('href') : '#';
-        $class = trim(($target->hasAttribute('class') ? $target->getAttribute('class') : '') . ' button');
+        $class = $target->hasAttribute('class') ? $target->getAttribute('class') : null;
 
         $table = $this->replace($target, self::$template);
-        $table->setAttribute('class', $class);
+
+        if ($class) {
+            $this->addClass($table, $class);
+        }
 
         $xpath = new \DOMXpath($table->ownerDocument);
         $link = $xpath->query('//a', $table)->item(0);
         $link->setAttribute('href', $href);
 
-        if (in_array('expanded', explode(' ', $class))) {
+        if ($class && in_array('expanded', explode(' ', $class))) {
             $this->wrap($link, '<center data-parsed="data-parsed"><inky-content /></center>');
         }
     }
