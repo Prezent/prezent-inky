@@ -41,7 +41,7 @@ EOL;
         }
 
         $xpath = new \DOMXpath($table->ownerDocument);
-        $link = $xpath->query('//a', $table)->item(0);
+        $link = $xpath->query('.//a', $table)->item(0);
         $link->setAttribute('href', $href);
 
         if ($class && in_array('expanded', explode(' ', $class))) {

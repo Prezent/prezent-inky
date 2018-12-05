@@ -32,7 +32,7 @@ EOL;
 
         if ($class) {
             $xpath = new \DOMXPath($table->ownerDocument);
-            $xpath->query('//td', $table)->item(0)
+            $xpath->query('.//td', $table)->item(0)
                 ->setAttribute('class', $class);
         }
     }

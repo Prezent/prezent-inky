@@ -31,7 +31,7 @@ EOL;
 
         if ($class) {
             $xpath = new \DOMXPath($table->ownerDocument);
-            $xpath->query('//th[contains(@class, "callout-inner")]', $table)->item(0)
+            $xpath->query('.//th[contains(@class, "callout-inner")]', $table)->item(0)
                 ->setAttribute('class', 'callout-inner ' . $class);
         }
     }
