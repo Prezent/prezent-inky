@@ -28,10 +28,10 @@
     },
     "require": {
         "ext-dom": "*",
-        "php": "^5.5|^7.0"
+        "php": "^7.0|^8.0"
     },
     "require-dev": {
-        "symfony/dom-crawler": "^3.4|^4.0",
-        "symfony/css-selector": "^3.4|^4.0"
+        "symfony/dom-crawler": "^3.4|^4.0|^5,0",
+        "symfony/css-selector": "^3.4|^4.0|^5.0"
     }
 }
